@@ -4,7 +4,7 @@ package io.sellmair.sample.composition
 
 import io.sellmair.sample.models.GameState
 import io.sellmair.sample.models.SaveStateHeader
-import io.sellmair.sample.composition.SaveStateEncoder.GameEntityEncoder
+import io.sellmair.sample.composition.GameStateEncoder.GameEntityEncoder
 import java.io.File
 
 class GameStateSaver(
@@ -33,7 +33,7 @@ class GameStateSaver(
 fun AutoSaveJsonSaveStateFile(file: File): GameStateSaver {
     return GameStateSaver(
         gameStateWriter = GameStateSaver.Writer.file(file),
-        encoder = SaveStateEncoder(
+        encoder = GameStateEncoder(
             gameEntityEncoder = GameEntityEncoder.javaSerialization,
             saveStateHeaderFactory = SaveStateHeader.factory(
                 isAutoSave = true
@@ -45,7 +45,7 @@ fun AutoSaveJsonSaveStateFile(file: File): GameStateSaver {
 fun AutoSaveJavaSerializableSaveStateFile(file: File): GameStateSaver {
     return GameStateSaver(
         gameStateWriter = GameStateSaver.Writer.file(file),
-        encoder = SaveStateEncoder(
+        encoder = GameStateEncoder(
             gameEntityEncoder = GameEntityEncoder.json,
             saveStateHeaderFactory = SaveStateHeader.factory(
                 isAutoSave = true
@@ -57,10 +57,22 @@ fun AutoSaveJavaSerializableSaveStateFile(file: File): GameStateSaver {
 fun ManualSaveJsonSaveStateFile(file: File): GameStateSaver {
     return GameStateSaver(
         gameStateWriter = GameStateSaver.Writer.file(file),
-        encoder = SaveStateEncoder(
+        encoder = GameStateEncoder(
             gameEntityEncoder = GameEntityEncoder.json,
             saveStateHeaderFactory = SaveStateHeader.factory(
-                isAutoSave = true
+                isAutoSave = false
+            ),
+        )
+    )
+}
+
+fun ManualSaveJavaSerializableSaveStateFile(file: File): GameStateSaver {
+    return GameStateSaver(
+        gameStateWriter = GameStateSaver.Writer.file(file),
+        encoder = GameStateEncoder(
+            gameEntityEncoder = GameEntityEncoder.json,
+            saveStateHeaderFactory = SaveStateHeader.factory(
+                isAutoSave = false
             ),
         )
     )

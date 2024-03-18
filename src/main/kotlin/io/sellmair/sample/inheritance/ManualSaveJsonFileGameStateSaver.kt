@@ -8,9 +8,9 @@ import java.io.File
  * Implementation of a save state which is
  *  - file-based
  *  - uses json as encoding
- *  - creates a header with current time and 'isAutoSave = true'
+ *  - creates a header with current time and 'isAutoSave = false'
  */
-class AutoSaveJsonGameStateSaverFile(file: File) : AbstractJsonGameStateSaverFile(file) {
+class ManualSaveJsonFileGameStateSaver(file: File) : AbstractJsonFileGameStateSaver(file) {
     override fun createSaveStateHeader(): SaveStateHeader {
         return SaveStateHeader(isAutoSave = true, saveTime = Clock.System.now())
     }

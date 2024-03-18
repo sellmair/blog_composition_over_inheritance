@@ -8,10 +8,10 @@ import java.io.File
  * Implementation of a save state which is
  *  - file-based
  *  - uses java.io.Serializable as encoding
- *  - creates a header with current time and 'isAutoSave = false'
+ *  - creates a header with current time and 'isAutoSave = true'
  */
-class ManualSaveJavaSerializableGameStateSaverFile(file: File) : AbstractJavaSerializableGameStateSaverFile(file) {
+class AutoSaveJavaSerializableFileGameStateSaver(file: File) : AbstractJavaSerializableFileGameStateSaver(file) {
     override fun createSaveStateHeader(): SaveStateHeader {
-        return SaveStateHeader(isAutoSave = false, saveTime = Clock.System.now())
+        return SaveStateHeader(isAutoSave = true, saveTime = Clock.System.now())
     }
 }

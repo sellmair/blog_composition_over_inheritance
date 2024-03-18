@@ -19,5 +19,3 @@ abstract class AbstractGameStateSaver {
     protected abstract fun encodeGameState(gameState: GameState): ByteArray
     protected abstract fun storeGameState(byteArray: ByteArray)
 }
-
-

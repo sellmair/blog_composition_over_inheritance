@@ -11,7 +11,7 @@ import java.nio.ByteBuffer
  * Base Class for 'File based' Save States:
  * Will encode the [GameEntity] parts of the GameState and write it to the provided [file]
  */
-abstract class AbstractGameStateSaverFile(private val file: File) : AbstractGameStateSaver() {
+abstract class AbstractFileGameStateSaver(private val file: File) : AbstractGameStateSaver() {
 
     /**
      * Easy: We know how to store the bytes in a file!

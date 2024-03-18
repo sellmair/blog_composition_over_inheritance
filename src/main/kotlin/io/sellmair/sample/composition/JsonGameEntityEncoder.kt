@@ -7,10 +7,10 @@ import io.sellmair.sample.utils.writeString
 import java.io.ByteArrayOutputStream
 
 
-val SaveStateEncoder.GameEntityEncoder.Companion.json: SaveStateEncoder.GameEntityEncoder
+val GameStateEncoder.GameEntityEncoder.Companion.json: GameStateEncoder.GameEntityEncoder
     get() = JsonGameEntityEncoder
 
-private object JsonGameEntityEncoder : SaveStateEncoder.GameEntityEncoder {
+private object JsonGameEntityEncoder : GameStateEncoder.GameEntityEncoder {
     override fun encodeGameEntity(gameEntity: GameEntity): ByteArray {
         val jsonAsBytes = gameEntity.encodeAsJson().encodeToByteArray()
 

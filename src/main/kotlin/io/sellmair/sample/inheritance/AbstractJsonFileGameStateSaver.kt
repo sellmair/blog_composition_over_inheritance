@@ -8,7 +8,7 @@ import java.io.File
 /**
  * Base class for Json based save state files
  */
-abstract class AbstractJsonGameStateSaverFile(file: File) : AbstractGameStateSaverFile(file) {
+abstract class AbstractJsonFileGameStateSaver(file: File) : AbstractFileGameStateSaver(file) {
     override fun writeGameEntityHeader(
         stream: ByteArrayOutputStream, gameEntity: GameEntity, encoded: ByteArray
     ) {
